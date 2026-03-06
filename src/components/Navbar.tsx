@@ -84,9 +84,6 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" className="btn-accent block text-center mt-3 text-sm py-2">
-              Get In Touch
-            </Link>
           </div>
         )}
       </div>
