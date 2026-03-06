@@ -19,6 +19,8 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const message = `Hello, I'm ${form.name}.%0A%0APhone: ${form.phone}%0AEmail: ${form.email}%0AService: ${form.service}%0A%0AMessage: ${form.message}`;
+    window.open(`https://wa.me/918309458058?text=${message}`, '_blank');
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
     setForm({ name: "", phone: "", email: "", service: "", message: "" });
