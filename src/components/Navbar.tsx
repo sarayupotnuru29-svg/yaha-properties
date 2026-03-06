@@ -49,7 +49,9 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`font-medium transition-colors duration-200 ${
-                  location.pathname === link.path
+                  link.path === "/contact"
+                    ? "btn-accent text-sm py-2 px-6"
+                    : location.pathname === link.path
                     ? "text-accent"
                     : scrolled
                     ? "text-foreground hover:text-primary"
