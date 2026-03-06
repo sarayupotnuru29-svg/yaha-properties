@@ -59,9 +59,6 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" className="btn-accent text-sm py-2 px-6">
-              Get In Touch
-            </Link>
           </div>
 
           <button
