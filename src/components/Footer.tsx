@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
-// import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+// import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Heart } from "lucide-react";
 // import logo from "@/assets/logo.png";
+// import staffArcLogo from "@/assets/staffarclogo.jpg";
 
 // const Footer = () => {
 //   return (
@@ -92,10 +93,28 @@
 //           </div>
 //         </div>
 
-//         <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
+//         <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col items-center gap-4">
 //           <p className="text-primary-foreground/60 text-sm">
 //             © {new Date().getFullYear()} Yaha Properties. All rights reserved.
 //           </p>
+          
+//           {/* Credits Section */}
+//           <div className="flex justify-center items-center gap-1 text-sm">
+//             Made with <Heart className="inline h-4 w-4 text-red-500 mx-1 fill-red-500" /> by
+//             <a
+//               href="https://staffarc.in"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="flex items-center gap-1 text-orange-500 hover:text-orange-400 font-medium transition-colors hover:underline"
+//             >
+//               <img
+//                 src={staffArcLogo}
+//                 alt="StaffArc logo"
+//                 className="h-5 w-5 object-contain rounded-sm"
+//               />
+//               StaffArc
+//             </a>
+//           </div>
 //         </div>
 //       </div>
 //     </footer>
@@ -103,7 +122,6 @@
 // };
 
 // export default Footer;
-
 
 
 
@@ -122,9 +140,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Yaha Properties" className="h-12 w-auto" />
-              <span className="font-heading font-bold text-xl">Yaha Properties</span>
+            {/* Increased h-12 to h-16 for a larger footer logo */}
+            <div className="flex items-center gap-4 mb-5">
+              <img src={logo} alt="Yaha Properties" className="h-16 w-auto" />
+              <span className="font-heading font-bold text-2xl">Yaha Properties</span>
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
               Smart real estate investments in Tirupati. Legally verified, growth-focused property solutions.
@@ -154,6 +173,7 @@ const Footer = () => {
                 { name: "About Us", path: "/about" },
                 { name: "Services", path: "/services" },
                 { name: "Properties", path: "/properties" },
+                { name: "Customers", path: "/customers" },
                 { name: "Contact Us", path: "/contact" },
               ].map((link) => (
                 <li key={link.path}>
