@@ -26,46 +26,6 @@ const Home = () => {
       >
         <div className="absolute inset-0 gradient-overlay" />
         
-        {/* Top Social Bar - Clickable & Redirecting */}
-        <div className="relative z-10 w-full bg-black/30 backdrop-blur-sm border-b border-white/10">
-          <div className="container mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
-            <div className="flex gap-6">
-              {/* Facebook Clickable Link */}
-              <a 
-                href="https://facebook.com/yahaproperties" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 text-primary-foreground/90 hover:text-accent transition-all text-sm font-medium group"
-              >
-                <Facebook size={16} className="text-accent group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">Yaha Properties</span>
-              </a>
-
-              {/* Instagram Clickable Link */}
-              <a 
-                href="https://instagram.com/yahaproperties" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 text-primary-foreground/90 hover:text-accent transition-all text-sm font-medium group"
-              >
-                <Instagram size={16} className="text-accent group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">@yahaproperties</span>
-              </a>
-            </div>
-            
-            {/* WhatsApp Clickable Link */}
-            <a 
-              href="https://wa.me/918106396021" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#25D366] hover:text-white transition-colors text-sm font-bold group"
-            >
-              <MessageCircle size={18} fill="currentColor" className="text-[#25D366] group-hover:animate-bounce" />
-              <span>WhatsApp: +91 8106396021</span>
-            </a>
-          </div>
-        </div>
-
         {/* Hero Content */}
         <div className="relative flex-grow flex items-center container mx-auto px-4 md:px-8 py-20">
           <div className="max-w-3xl">
@@ -80,11 +40,12 @@ const Home = () => {
             <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">
               Legally Verified | Growth Focused | Investment Driven
             </p>
-            <div className="flex flex-wrap gap-4">
+            
+            {/* Primary Action Buttons */}
+            <div className="flex flex-wrap gap-4 mb-10">
               <Link to="/properties" className="btn-accent flex items-center gap-2">
                 Explore Properties <ArrowRight size={18} />
               </Link>
-              {/* WhatsApp Direct Action Button */}
               <a 
                 href="https://wa.me/918106396021" 
                 target="_blank" 
@@ -94,6 +55,34 @@ const Home = () => {
                 <MessageCircle size={20} />
                 WhatsApp Us
               </a>
+            </div>
+
+            {/* Integrated Social & Contact Details (Moved from Top Bar) */}
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
+              <a 
+                href="https://facebook.com/yahaproperties" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 text-white/80 hover:text-accent transition-all text-sm font-medium group"
+              >
+                <Facebook size={18} className="text-accent group-hover:scale-110 transition-transform" />
+                <span>Yaha Properties</span>
+              </a>
+
+              <a 
+                href="https://instagram.com/yahaproperties" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 text-white/80 hover:text-accent transition-all text-sm font-medium group"
+              >
+                <Instagram size={18} className="text-accent group-hover:scale-110 transition-transform" />
+                <span>@yahaproperties</span>
+              </a>
+
+              {/* <div className="flex items-center gap-2 text-[#25D366] text-sm font-bold">
+                <MessageCircle size={18} fill="currentColor" />
+                <span>+91 8106396021</span>
+              </div> */}
             </div>
           </div>
         </div>
