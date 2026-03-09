@@ -95,7 +95,7 @@ const Contact = () => {
                 <h2 className="font-heading font-bold text-2xl text-foreground mb-6">Follow Us</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <a 
-                    href="https://facebook.com/yahaproperties" 
+                    href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 bg-secondary rounded-xl hover:bg-accent/10 transition-colors group"

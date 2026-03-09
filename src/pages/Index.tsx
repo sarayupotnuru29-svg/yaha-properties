@@ -60,7 +60,7 @@ const Home = () => {
             {/* Integrated Social & Contact Details (Moved from Top Bar) */}
             <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
               <a 
-                href="https://facebook.com/yahaproperties" 
+                href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center gap-2 text-white/80 hover:text-accent transition-all text-sm font-medium group"
