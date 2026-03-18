@@ -882,12 +882,9 @@ const Home = () => {
             <h2 className="section-title">
               About <span className="text-primary">Yaha Properties</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mt-6 mb-4">
-              Yaha Properties is a Tirupati-based real estate firm specializing in legally verified, growth-driven property investments.
-            </p>
             
-            {/* Social Icons for Mobile - Placed under the heading/description */}
-            <div className="flex md:hidden justify-center items-center gap-6 mb-8 mt-4">
+            {/* Social Icons for Mobile - NOW EXACTLY UNDER THE HEADING */}
+            <div className="flex md:hidden justify-center items-center gap-6 mb-6 mt-6">
                <a 
                 href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
                 target="_blank" rel="noopener noreferrer"
@@ -910,6 +907,10 @@ const Home = () => {
                 <MessageCircle size={20} />
               </a>
             </div>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Yaha Properties is a Tirupati-based real estate firm specializing in legally verified, growth-driven property investments.
+            </p>
 
             <p className="text-muted-foreground leading-relaxed mb-8">
               We help investors and buyers identify high-growth real estate opportunities across Tirupati and surrounding regions.
