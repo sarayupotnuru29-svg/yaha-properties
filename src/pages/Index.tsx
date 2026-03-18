@@ -5,7 +5,6 @@
 //   MapPin, 
 //   Building2, 
 //   TrendingUp, 
-//   Shield, 
 //   Facebook, 
 //   Instagram, 
 //   MessageCircle 
@@ -45,11 +44,12 @@
 //           </video>
 //         </div>
         
-//         {/* Hero Content */}
+//         {/* Hero Content - Position preserved for Laptop, Hidden children for Mobile */}
 //         <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-48 md:pt-64 pb-20">
 //           <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
-//             {/* Action Buttons Group */}
-//             <div className="flex flex-col gap-4">
+            
+//             {/* Action Buttons Group - HIDDEN on mobile, flex on md (laptop) */}
+//             <div className="hidden md:flex flex-col gap-4">
 //               <div className="flex flex-wrap items-center gap-4">
 //                 <Link to="/properties" className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg transform hover:-translate-y-1">
 //                   Explore Properties <ArrowRight size={18} />
@@ -66,7 +66,7 @@
 //                 </a>
 //               </div>
 
-//               {/* Social Links - Side by Side directly under buttons */}
+//               {/* Social Links - HIDDEN on mobile, flex on md (laptop) */}
 //               <div className="flex flex-wrap items-center gap-6 px-1">
 //                 <a 
 //                   href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
@@ -159,27 +159,32 @@
 //         </div>
 //       </section>
 
-//       {/* Investment Corridor */}
+//       {/* Investment Corridor - Reduced Box Size & Increased Shade */}
 //       <section
 //         className="relative section-padding"
-//         style={{ backgroundImage: `url(${investmentCorridor})`, backgroundSize: "cover", backgroundPosition: "center" }}
+//         style={{ 
+//           backgroundImage: `url(${investmentCorridor})`, 
+//           backgroundSize: "cover", 
+//           backgroundPosition: "center",
+//           backgroundRepeat: "no-repeat" 
+//         }}
 //       >
-//         <div className="absolute inset-0 gradient-overlay" />
 //         <div className="relative container mx-auto">
-//           <div className="max-w-2xl">
-//             <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-8">
+//           {/* Box Size reduced to max-w-md, shade increased to 60% opacity blue-950 */}
+//           <div className="max-w-md bg-blue-950/60 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
+//             <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-6 drop-shadow-md">
 //               Investment <span className="text-accent">Corridor</span>
 //             </h2>
 //             <div className="space-y-4">
 //               {[
 //                 { icon: MapPin, text: "Tirupati Growth Zones" },
-//                 { icon: Building2, text: "Tirupati–Naidupeta Industrial Corridor" },
-//                 { icon: TrendingUp, text: "Highway Facing Developments" },
-//                 { icon: CheckCircle, text: "TUDA Approved Layouts" },
+//                 { icon: Building2, text: "Industrial Corridor" },
+//                 { icon: TrendingUp, text: "Highway Developments" },
+//                 { icon: CheckCircle, text: "TUDA Approved" },
 //               ].map((item) => (
-//                 <div key={item.text} className="flex items-center gap-3 text-primary-foreground/90">
-//                   <item.icon size={22} className="text-accent flex-shrink-0" />
-//                   <span className="text-lg">{item.text}</span>
+//                 <div key={item.text} className="flex items-center gap-3 text-white/90">
+//                   <item.icon size={20} className="text-accent flex-shrink-0 drop-shadow-md" />
+//                   <span className="text-base md:text-lg font-medium drop-shadow-md">{item.text}</span>
 //                 </div>
 //               ))}
 //             </div>
@@ -214,6 +219,13 @@
 
 
 
+
+
+
+
+
+
+
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -226,18 +238,36 @@ import {
   MessageCircle 
 } from "lucide-react";
 import investmentCorridor from "@/assets/investment-corridor.jpg";
+// New mobile-specific import
+import investmentCorridorMobile from "@/assets/investment-corridor2.jpg.jpeg"; 
 import CountUpNumber from "@/components/CountUpNumber";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  // Logic to handle background image switching based on window width
+  const [bgImage, setBgImage] = useState(investmentCorridor);
+
+  useEffect(() => {
+    const updateBg = () => {
+      if (window.innerWidth < 768) {
+        setBgImage(investmentCorridorMobile);
+      } else {
+        setBgImage(investmentCorridor);
+      }
+    };
+
+    updateBg();
+    window.addEventListener("resize", updateBg);
+    return () => window.removeEventListener("resize", updateBg);
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
-        {/* Background Videos - No Filter/Overlay */}
         <div className="absolute inset-0 z-0">
-          {/* Desktop Video */}
           <video
             autoPlay
             muted
@@ -248,7 +278,6 @@ const Home = () => {
             <source src="/YAHA LP DESTP.mp4" type="video/mp4" />
           </video>
           
-          {/* Mobile Video */}
           <video
             autoPlay
             muted
@@ -260,11 +289,8 @@ const Home = () => {
           </video>
         </div>
         
-        {/* Hero Content - Position preserved for Laptop, Hidden children for Mobile */}
         <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-48 md:pt-64 pb-20">
           <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
-            
-            {/* Action Buttons Group - HIDDEN on mobile, flex on md (laptop) */}
             <div className="hidden md:flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-4">
                 <Link to="/properties" className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg transform hover:-translate-y-1">
@@ -282,7 +308,6 @@ const Home = () => {
                 </a>
               </div>
 
-              {/* Social Links - HIDDEN on mobile, flex on md (laptop) */}
               <div className="flex flex-wrap items-center gap-6 px-1">
                 <a 
                   href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
@@ -375,27 +400,31 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Investment Corridor */}
+      {/* Investment Corridor - Dynamic Mobile/Desktop Background */}
       <section
-        className="relative section-padding"
-        style={{ backgroundImage: `url(${investmentCorridor})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        className="relative section-padding transition-all duration-500"
+        style={{ 
+          backgroundImage: `url(${bgImage})`, 
+          backgroundSize: "cover", 
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat" 
+        }}
       >
-        <div className="absolute inset-0 gradient-overlay" />
         <div className="relative container mx-auto">
-          <div className="max-w-2xl">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-8">
+          <div className="max-w-md bg-blue-950/60 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-6 drop-shadow-md">
               Investment <span className="text-accent">Corridor</span>
             </h2>
             <div className="space-y-4">
               {[
                 { icon: MapPin, text: "Tirupati Growth Zones" },
-                { icon: Building2, text: "Tirupati–Naidupeta Industrial Corridor" },
-                { icon: TrendingUp, text: "Highway Facing Developments" },
-                { icon: CheckCircle, text: "TUDA Approved Layouts" },
+                { icon: Building2, text: "Industrial Corridor" },
+                { icon: TrendingUp, text: "Highway Developments" },
+                { icon: CheckCircle, text: "TUDA Approved" },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-3 text-primary-foreground/90">
-                  <item.icon size={22} className="text-accent flex-shrink-0" />
-                  <span className="text-lg">{item.text}</span>
+                <div key={item.text} className="flex items-center gap-3 text-white/90">
+                  <item.icon size={20} className="text-accent flex-shrink-0 drop-shadow-md" />
+                  <span className="text-base md:text-lg font-medium drop-shadow-md">{item.text}</span>
                 </div>
               ))}
             </div>
