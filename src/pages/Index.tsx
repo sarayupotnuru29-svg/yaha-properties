@@ -216,6 +216,9 @@
 
 
 
+
+
+
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -234,7 +237,7 @@ import { services } from "@/data/services";
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
         {/* Background Videos */}
@@ -260,13 +263,16 @@ const Home = () => {
           </video>
         </div>
         
-        {/* Hero Content - Adjusted Padding for Mobile */}
-        <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-28 md:pt-64 pb-10">
-          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
+        {/* Hero Content - Fixed Mobile Alignment */}
+        <div className="relative z-20 flex-grow flex items-start md:items-center container mx-auto px-4 md:px-8 pt-32 md:pt-0 pb-20">
+          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%] w-full">
             <div className="flex flex-col gap-4">
-              {/* Buttons with refined mobile sizing */}
+              {/* Action Buttons Group */}
               <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                <Link to="/properties" className="bg-[#0b5394] hover:bg-blue-800 text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg text-sm md:text-base">
+                <Link 
+                  to="/properties" 
+                  className="bg-[#0b5394] hover:bg-blue-800 text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg text-sm md:text-base"
+                >
                   Explore Properties <ArrowRight size={18} />
                 </Link>
 
@@ -281,7 +287,7 @@ const Home = () => {
                 </a>
               </div>
 
-              {/* Social Links - Smaller on Mobile */}
+              {/* Social Links */}
               <div className="flex flex-wrap items-center gap-4 md:gap-6 px-1">
                 <a 
                   href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
@@ -289,7 +295,7 @@ const Home = () => {
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-xs md:text-sm font-bold drop-shadow-md group"
                 >
-                  <Facebook size={16} className="text-blue-600 group-hover:scale-110 transition-transform" />
+                  <Facebook size={18} className="text-blue-600 group-hover:scale-110 transition-transform" />
                   <span>Yaha Properties</span>
                 </a>
 
@@ -299,7 +305,7 @@ const Home = () => {
                   rel="noopener noreferrer" 
                   className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-xs md:text-sm font-bold drop-shadow-md group"
                 >
-                  <Instagram size={16} className="text-blue-600 group-hover:scale-110 transition-transform" />
+                  <Instagram size={18} className="text-blue-600 group-hover:scale-110 transition-transform" />
                   <span>@yahaproperties</span>
                 </a>
               </div>
@@ -374,27 +380,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Investment Corridor - Updated to Match Uploaded Image */}
+      {/* Investment Corridor - High Fidelity Image Match */}
       <section 
         className="relative py-20 md:py-32 flex items-center bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${investmentCorridor})` }}
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-xl bg-black/50 backdrop-blur-lg p-6 md:p-10 rounded-[40px] border border-white/20 shadow-2xl">
-            <h2 className="font-heading font-bold text-2xl md:text-4xl text-white mb-6 md:mb-8">
-              Investment <span className="text-orange-500">Corridor</span>
+          <div className="max-w-xl bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-[30px] md:rounded-[50px] border border-white/10 shadow-2xl">
+            <h2 className="font-heading font-bold text-3xl md:text-5xl text-white mb-8">
+              Investment <span className="text-[#f97316]">Corridor</span>
             </h2>
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-5 md:space-y-8">
               {[
-                { icon: MapPin, text: "Tirupati Growth Zones", color: "text-orange-400" },
-                { icon: Building2, text: "Tirupati–Naidupeta Industrial Corridor", color: "text-orange-400" },
-                { icon: TrendingUp, text: "Highway Facing Developments", color: "text-orange-400" },
-                { icon: CheckCircle, text: "TUDA Approved Layouts", color: "text-orange-400" },
+                { icon: MapPin, text: "TIRUPATI GROWTH ZONES" },
+                { icon: Building2, text: "TIRUPATI–NAIDUPETA CORRIDOR" },
+                { icon: TrendingUp, text: "HIGHWAY DEVELOPMENTS" },
+                { icon: CheckCircle, text: "TUDA APPROVED LAYOUTS" },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-3 md:gap-4 text-white">
-                  <item.icon size={22} className={`${item.color} flex-shrink-0`} />
-                  <span className="text-base md:text-xl font-bold tracking-wide">
-                    {item.text.toUpperCase()}
+                <div key={item.text} className="flex items-center gap-4 text-white group">
+                  <item.icon size={24} className="text-[#f97316] flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="text-base md:text-xl font-extrabold tracking-wider">
+                    {item.text}
                   </span>
                 </div>
               ))}
