@@ -57,7 +57,7 @@
 //               </a>
 //             </div>
 
-//             {/* Integrated Social & Contact Details (Moved from Top Bar) */}
+//             {/* Integrated Social & Contact Details */}
 //             <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
 //               <a 
 //                 href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
@@ -78,11 +78,6 @@
 //                 <Instagram size={18} className="text-accent group-hover:scale-110 transition-transform" />
 //                 <span>@yahaproperties</span>
 //               </a>
-
-//               {/* <div className="flex items-center gap-2 text-[#25D366] text-sm font-bold">
-//                 <MessageCircle size={18} fill="currentColor" />
-//                 <span>+91 8106396021</span>
-//               </div> */}
 //             </div>
 //           </div>
 //         </div>
@@ -213,6 +208,7 @@
 
 
 
+
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -225,7 +221,6 @@ import {
   Instagram, 
   MessageCircle 
 } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 import investmentCorridor from "@/assets/investment-corridor.jpg";
 import CountUpNumber from "@/components/CountUpNumber";
 import ServiceCard from "@/components/ServiceCard";
@@ -235,14 +230,37 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex flex-col"
-        style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
-      >
-        <div className="absolute inset-0 gradient-overlay" />
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* Background Videos */}
+        <div className="absolute inset-0 z-0">
+          {/* Desktop Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hidden md:block w-full h-full object-cover"
+          >
+            <source src="/YAHA LP DESTP.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Mobile Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="block md:hidden w-full h-full object-cover"
+          >
+            <source src="/YAHA LP MBL.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Overlay - Ensuring text readability */}
+        <div className="absolute inset-0 gradient-overlay z-10" />
         
         {/* Hero Content */}
-        <div className="relative flex-grow flex items-center container mx-auto px-4 md:px-8 py-20">
+        <div className="relative z-20 flex-grow flex items-center container mx-auto px-4 md:px-8 py-20">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm text-accent-foreground px-4 py-2 rounded-full mb-6 text-sm font-medium border border-accent/30">
               <Shield size={16} />
