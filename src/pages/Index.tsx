@@ -10,18 +10,36 @@
 //   MessageCircle 
 // } from "lucide-react";
 // import investmentCorridor from "@/assets/investment-corridor.jpg";
+// // New mobile-specific import
+// import investmentCorridorMobile from "@/assets/investment-corridor2.jpg.jpeg"; 
 // import CountUpNumber from "@/components/CountUpNumber";
 // import ServiceCard from "@/components/ServiceCard";
 // import { services } from "@/data/services";
+// import { useEffect, useState } from "react";
 
 // const Home = () => {
+//   // Logic to handle background image switching based on window width
+//   const [bgImage, setBgImage] = useState(investmentCorridor);
+
+//   useEffect(() => {
+//     const updateBg = () => {
+//       if (window.innerWidth < 768) {
+//         setBgImage(investmentCorridorMobile);
+//       } else {
+//         setBgImage(investmentCorridor);
+//       }
+//     };
+
+//     updateBg();
+//     window.addEventListener("resize", updateBg);
+//     return () => window.removeEventListener("resize", updateBg);
+//   }, []);
+
 //   return (
 //     <div>
 //       {/* Hero Section */}
 //       <section className="relative min-h-screen flex flex-col overflow-hidden">
-//         {/* Background Videos - No Filter/Overlay */}
 //         <div className="absolute inset-0 z-0">
-//           {/* Desktop Video */}
 //           <video
 //             autoPlay
 //             muted
@@ -32,7 +50,6 @@
 //             <source src="/YAHA LP DESTP.mp4" type="video/mp4" />
 //           </video>
           
-//           {/* Mobile Video */}
 //           <video
 //             autoPlay
 //             muted
@@ -44,11 +61,8 @@
 //           </video>
 //         </div>
         
-//         {/* Hero Content - Position preserved for Laptop, Hidden children for Mobile */}
 //         <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-48 md:pt-64 pb-20">
 //           <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
-            
-//             {/* Action Buttons Group - HIDDEN on mobile, flex on md (laptop) */}
 //             <div className="hidden md:flex flex-col gap-4">
 //               <div className="flex flex-wrap items-center gap-4">
 //                 <Link to="/properties" className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg transform hover:-translate-y-1">
@@ -66,7 +80,6 @@
 //                 </a>
 //               </div>
 
-//               {/* Social Links - HIDDEN on mobile, flex on md (laptop) */}
 //               <div className="flex flex-wrap items-center gap-6 px-1">
 //                 <a 
 //                   href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
@@ -159,32 +172,34 @@
 //         </div>
 //       </section>
 
-//       {/* Investment Corridor - Reduced Box Size & Increased Shade */}
+//       {/* Investment Corridor - Centered Layout */}
 //       <section
-//         className="relative section-padding"
+//         className="relative min-h-[500px] flex items-center transition-all duration-500"
 //         style={{ 
-//           backgroundImage: `url(${investmentCorridor})`, 
+//           backgroundImage: `url(${bgImage})`, 
 //           backgroundSize: "cover", 
 //           backgroundPosition: "center",
 //           backgroundRepeat: "no-repeat" 
 //         }}
 //       >
-//         <div className="relative container mx-auto">
-//           {/* Box Size reduced to max-w-md, shade increased to 60% opacity blue-950 */}
-//           <div className="max-w-md bg-blue-950/60 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
-//             <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-6 drop-shadow-md">
+//         {/* Overlay to ensure readability if the background is too bright */}
+//         <div className="absolute inset-0 bg-black/20 z-0"></div>
+
+//         <div className="relative z-10 container mx-auto flex justify-center items-center px-4">
+//           <div className="max-w-md w-full bg-blue-950/60 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl text-center">
+//             <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-8 drop-shadow-md">
 //               Investment <span className="text-accent">Corridor</span>
 //             </h2>
-//             <div className="space-y-4">
+//             <div className="space-y-5">
 //               {[
 //                 { icon: MapPin, text: "Tirupati Growth Zones" },
 //                 { icon: Building2, text: "Industrial Corridor" },
 //                 { icon: TrendingUp, text: "Highway Developments" },
 //                 { icon: CheckCircle, text: "TUDA Approved" },
 //               ].map((item) => (
-//                 <div key={item.text} className="flex items-center gap-3 text-white/90">
-//                   <item.icon size={20} className="text-accent flex-shrink-0 drop-shadow-md" />
-//                   <span className="text-base md:text-lg font-medium drop-shadow-md">{item.text}</span>
+//                 <div key={item.text} className="flex items-center justify-center gap-4 text-white/90">
+//                   <item.icon size={22} className="text-accent flex-shrink-0 drop-shadow-md" />
+//                   <span className="text-lg md:text-xl font-medium drop-shadow-md">{item.text}</span>
 //                 </div>
 //               ))}
 //             </div>
@@ -216,10 +231,6 @@
 // };
 
 // export default Home;
-
-
-
-
 
 
 
@@ -290,7 +301,8 @@ const Home = () => {
         </div>
         
         <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-48 md:pt-64 pb-20">
-          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
+          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%] w-full">
+            {/* Laptop View: Full Buttons & Links */}
             <div className="hidden md:flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-4">
                 <Link to="/properties" className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg transform hover:-translate-y-1">
@@ -329,6 +341,31 @@ const Home = () => {
                   <span>@yahaproperties</span>
                 </a>
               </div>
+            </div>
+
+            {/* Mobile View: Icon-Only Links centered at bottom */}
+            <div className="flex md:hidden justify-center items-center gap-8 mt-[60vh]">
+               <a 
+                href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
+                target="_blank" rel="noopener noreferrer"
+                className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/30 text-white"
+              >
+                <Facebook size={24} />
+              </a>
+              <a 
+                href="https://instagram.com/yahaproperties" 
+                target="_blank" rel="noopener noreferrer"
+                className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/30 text-white"
+              >
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="https://wa.me/918106396021" 
+                target="_blank" rel="noopener noreferrer"
+                className="bg-green-500/80 backdrop-blur-sm p-3 rounded-full border border-white/30 text-white"
+              >
+                <MessageCircle size={24} />
+              </a>
             </div>
           </div>
         </div>
@@ -400,9 +437,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Investment Corridor - Dynamic Mobile/Desktop Background */}
+      {/* Investment Corridor - Centered Layout */}
       <section
-        className="relative section-padding transition-all duration-500"
+        className="relative min-h-[500px] flex items-center transition-all duration-500"
         style={{ 
           backgroundImage: `url(${bgImage})`, 
           backgroundSize: "cover", 
@@ -410,21 +447,23 @@ const Home = () => {
           backgroundRepeat: "no-repeat" 
         }}
       >
-        <div className="relative container mx-auto">
-          <div className="max-w-md bg-blue-950/60 backdrop-blur-md p-6 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-6 drop-shadow-md">
+        <div className="absolute inset-0 bg-black/20 z-0"></div>
+
+        <div className="relative z-10 container mx-auto flex justify-center items-center px-4">
+          <div className="max-w-md w-full bg-blue-950/60 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl text-center">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-8 drop-shadow-md">
               Investment <span className="text-accent">Corridor</span>
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {[
                 { icon: MapPin, text: "Tirupati Growth Zones" },
                 { icon: Building2, text: "Industrial Corridor" },
                 { icon: TrendingUp, text: "Highway Developments" },
                 { icon: CheckCircle, text: "TUDA Approved" },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-3 text-white/90">
-                  <item.icon size={20} className="text-accent flex-shrink-0 drop-shadow-md" />
-                  <span className="text-base md:text-lg font-medium drop-shadow-md">{item.text}</span>
+                <div key={item.text} className="flex items-center justify-center gap-4 text-white/90">
+                  <item.icon size={22} className="text-accent flex-shrink-0 drop-shadow-md" />
+                  <span className="text-lg md:text-xl font-medium drop-shadow-md">{item.text}</span>
                 </div>
               ))}
             </div>
