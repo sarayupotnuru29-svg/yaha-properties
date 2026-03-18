@@ -214,11 +214,6 @@
 
 
 
-
-
-
-
-
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -240,8 +235,9 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
-        {/* Background Videos */}
+        {/* Background Videos - No Filter/Overlay */}
         <div className="absolute inset-0 z-0">
+          {/* Desktop Video */}
           <video
             autoPlay
             muted
@@ -252,6 +248,7 @@ const Home = () => {
             <source src="/YAHA LP DESTP.mp4" type="video/mp4" />
           </video>
           
+          {/* Mobile Video */}
           <video
             autoPlay
             muted
@@ -263,16 +260,14 @@ const Home = () => {
           </video>
         </div>
         
-        {/* Hero Content - Fixed Mobile Alignment */}
-        <div className="relative z-20 flex-grow flex items-start md:items-center container mx-auto px-4 md:px-8 pt-32 md:pt-0 pb-20">
-          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%] w-full">
-            <div className="flex flex-col gap-4">
-              {/* Action Buttons Group */}
-              <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                <Link 
-                  to="/properties" 
-                  className="bg-[#0b5394] hover:bg-blue-800 text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg text-sm md:text-base"
-                >
+        {/* Hero Content - Position preserved for Laptop, Hidden children for Mobile */}
+        <div className="relative z-20 flex-grow flex items-start container mx-auto px-4 md:px-8 pt-48 md:pt-64 pb-20">
+          <div className="max-w-3xl md:ml-[8%] lg:ml-[12%]">
+            
+            {/* Action Buttons Group - HIDDEN on mobile, flex on md (laptop) */}
+            <div className="hidden md:flex flex-col gap-4">
+              <div className="flex flex-wrap items-center gap-4">
+                <Link to="/properties" className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-lg transform hover:-translate-y-1">
                   Explore Properties <ArrowRight size={18} />
                 </Link>
 
@@ -280,20 +275,20 @@ const Home = () => {
                   href="https://wa.me/918106396021" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-[#0b5394] hover:bg-blue-700 text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md font-bold transition-all shadow-lg text-sm md:text-base"
+                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-bold transition-all shadow-lg transform hover:-translate-y-1"
                 >
                   <MessageCircle size={20} />
                   WhatsApp Us
                 </a>
               </div>
 
-              {/* Social Links */}
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 px-1">
+              {/* Social Links - HIDDEN on mobile, flex on md (laptop) */}
+              <div className="flex flex-wrap items-center gap-6 px-1">
                 <a 
                   href="https://www.facebook.com/share/1E9URqKEay/?mibextid=wwXIfr" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-xs md:text-sm font-bold drop-shadow-md group"
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-sm font-bold drop-shadow-md group"
                 >
                   <Facebook size={18} className="text-blue-600 group-hover:scale-110 transition-transform" />
                   <span>Yaha Properties</span>
@@ -303,7 +298,7 @@ const Home = () => {
                   href="https://instagram.com/yahaproperties" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-xs md:text-sm font-bold drop-shadow-md group"
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-all text-sm font-bold drop-shadow-md group"
                 >
                   <Instagram size={18} className="text-blue-600 group-hover:scale-110 transition-transform" />
                   <span>@yahaproperties</span>
@@ -380,28 +375,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Investment Corridor - High Fidelity Image Match */}
-      <section 
-        className="relative py-20 md:py-32 flex items-center bg-center bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url(${investmentCorridor})` }}
+      {/* Investment Corridor */}
+      <section
+        className="relative section-padding"
+        style={{ backgroundImage: `url(${investmentCorridor})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-[30px] md:rounded-[50px] border border-white/10 shadow-2xl">
-            <h2 className="font-heading font-bold text-3xl md:text-5xl text-white mb-8">
-              Investment <span className="text-[#f97316]">Corridor</span>
+        <div className="absolute inset-0 gradient-overlay" />
+        <div className="relative container mx-auto">
+          <div className="max-w-2xl">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-8">
+              Investment <span className="text-accent">Corridor</span>
             </h2>
-            <div className="space-y-5 md:space-y-8">
+            <div className="space-y-4">
               {[
-                { icon: MapPin, text: "TIRUPATI GROWTH ZONES" },
-                { icon: Building2, text: "TIRUPATI–NAIDUPETA CORRIDOR" },
-                { icon: TrendingUp, text: "HIGHWAY DEVELOPMENTS" },
-                { icon: CheckCircle, text: "TUDA APPROVED LAYOUTS" },
+                { icon: MapPin, text: "Tirupati Growth Zones" },
+                { icon: Building2, text: "Tirupati–Naidupeta Industrial Corridor" },
+                { icon: TrendingUp, text: "Highway Facing Developments" },
+                { icon: CheckCircle, text: "TUDA Approved Layouts" },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-4 text-white group">
-                  <item.icon size={24} className="text-[#f97316] flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-base md:text-xl font-extrabold tracking-wider">
-                    {item.text}
-                  </span>
+                <div key={item.text} className="flex items-center gap-3 text-primary-foreground/90">
+                  <item.icon size={22} className="text-accent flex-shrink-0" />
+                  <span className="text-lg">{item.text}</span>
                 </div>
               ))}
             </div>
